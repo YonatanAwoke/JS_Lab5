@@ -1,4 +1,6 @@
 
+
+
 function clr(){
     var res =document.getElementById("res");
     res.value="";
@@ -19,20 +21,17 @@ function inop(op){
 
 }
 function result(){
-    switch(oper){
-        case '+ ': return val1 + val2;break;
-        case '- ': return val1 - val2;break;
-        case '* ': return val1 * val2;break;
-        case '/ ': 
-            if (val2 == 0){
-                alert("Enter other number!");
-
-            }
-            else{
-                return val1 / val2;
-            }
-        break;
-    }
+    if(oper="+")
+        return val1 + val2
+    if(oper="-")
+        return val1 - val2
+    if(oper="*")
+        return val1 * val2
+    if(oper="/")
+        if(val2==0)
+            return "Invalid input!"
+        else
+            return val1 / val2
 }
 function calculate(){
     var res = document.getElementById("res");
