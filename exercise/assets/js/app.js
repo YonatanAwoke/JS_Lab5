@@ -4,9 +4,8 @@ const form = document.querySelector('#task-form'); //The form at the top
 const filter = document.querySelector('#filter'); //the task filter text field
 const taskList = document.querySelector('.collection'); //The UL
 const clearBtn = document.querySelector('.clear-tasks'); //the all task clear button
-
 const reloadIcon = document.querySelector('.fa'); //the reload button at the top navigation 
-
+const sortSelect=document.querySelector('#sort')
 // Add Event Listener  [Form , clearBtn and filter search input ]
 
 // form submit 
@@ -19,6 +18,7 @@ filter.addEventListener('keyup', filterTasks);
 taskList.addEventListener('click', removeTask);
 // Event Listener for reload 
 reloadIcon.addEventListener('click', reloadPage);
+sortSelect.addEventListener('change',sortTasks);
 
 
 
@@ -124,4 +124,31 @@ function removeTask(e) {
 function reloadPage() {
     //using the reload fun on location object 
     location.reload();
+}
+
+
+function sortTasks() {
+    list_of_dates = []
+    let collection_list = document.querySelectorAll('.collection-item')
+    collection_list.forEach(task => {
+        list_of_dates.push(task.dataset.date)
+    });
+    
+    list_of_dates.sort()
+
+    if (sortSelect.value == '2') {
+        list_of_dates.reverse()
+    }
+
+    clearAllTasks()
+    for (let i = 0; i < list_of_dates.length; i++) {
+        for (let j = 0; j < collection_list.length; j++) {
+            if (collection_list[j].dataset.date == list_of_dates[i]) {
+                taskList.appendChild(collection_list[j])
+            }
+            
+        }
+    
+    }
+
 }

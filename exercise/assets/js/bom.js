@@ -18,6 +18,7 @@ Good Luck !!!
 
 
 // Define UI Variables  here 
+const All = document.querySelectorAll(".collection-item");
 
 
 
@@ -28,30 +29,24 @@ Good Luck !!!
 
 
 // Display the BOM Information on the innerHTML of the elements
-var href=document.getElementById("hr").innerHTML="Answer"+ " -> " + location.href
-var protocol=document.getElementById("pro").innerHTML="Answer"+ " -> " + location.protocol
-var host=document.getElementById("ht").innerHTML="Answer"+ " -> " + location.host
-var port=document.getElementById("pt").innerHTML="Answer"+ " -> " + location.port
-var hostname=document.getElementById("hn").innerHTML="Answer"+ " -> " + location.hostname
+
+All.forEach(function(element, index) {
+    // getting the property names from a tag text and making them camelcase
+    const behaviour = element.firstChild.textContent[0].toLowerCase() + element.firstChild.textContent.slice(1)
+    
+    // a place for the values
+    let answer = element.firstElementChild
 
 
-
-
-var appname=document.getElementById("an").innerHTML="Answer"+ " -> " + navigator.appName
-var appversion=document.getElementById("av").innerHTML="Answer"+ " -> " + navigator.appVersion
-var platform=document.getElementById("pl").innerHTML="Answer"+ " -> " + navigator.platform
-var language=document.getElementById("lg").innerHTML="Answer"+ " -> " + navigator.language
-var cookieenabled=document.getElementById("ce").innerHTML="Answer"+ " -> " + navigator.cookieEnabled
-
-
-
-
-var height=document.getElementById("hg").innerHTML="Answer"+ " -> " + screen.height
-var width=document.getElementById("wd").innerHTML="Answer"+ " -> " + screen.width
-var pixeldepth=document.getElementById("pd").innerHTML="Answer"+ " -> " + screen.pixelDepth
-
-
-
-
-var length=document.getElementById("len").innerHTML="Answer"+ " -> " + history.length
-var state=document.getElementById("sta").innerHTML="Answer"+ " -> " + history.state
+    if (index <= 4) {
+        answer.innerHTML = location[behaviour]
+    }else if (index <= 9) {
+        answer.innerHTML = navigator[behaviour]
+    }else if (index <= 12) {
+        answer.innerHTML = screen[behaviour]
+    }else{
+        answer.innerHTML = history[behaviour]
+    }
+    
+    
+});
