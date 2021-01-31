@@ -21,17 +21,21 @@ function inop(op){
 
 }
 function result(){
-    if(oper="+")
+    if(oper=="+"){
         return val1 + val2
-    if(oper="-")
+    }
+    if(oper=="-"){
         return val1 - val2
-    if(oper="*")
+    }
+    if(oper=="*"){
         return val1 * val2
-    if(oper="/")
+    }
+    if(oper=="/"){
         if(val2==0)
             return "Invalid input!"
         else
             return val1 / val2
+    }
 }
 function calculate(){
     var res = document.getElementById("res");

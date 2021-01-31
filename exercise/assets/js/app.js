@@ -92,6 +92,19 @@ function filterTasks(e) {
     
     
     */
+   let search=filter.value;
+   let list=document.querySelectorAll('.collection-item')
+   list.forEach(element=> {
+       if (element.firstChild.textContent.indexOf(search)){
+           element.style.display="none";
+       }
+       else{
+           element.style.display="block";
+       }
+   } 
+    )
+
+
 
 }
 
